@@ -9,10 +9,26 @@ void main() {
   // 원래 있던거
   // runApp(MyApp());
 
-  var number = 42; // 동적 타입 변수 지정
-  printInteger(number); // 함수 호출
+  // Exam 1)
+  // var number = 42; // 동적 타입 변수 지정
+  // printInteger(number); // 함수 호출
 
+
+  // Exam 2)
+  checkVersion();
+  print('end process');
 }
+
+
+Future checkVersion() async {
+  var version = await lookUpVersion();
+  print(version);
+}
+
+int lookUpVersion() {
+  return 12;
+}
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
