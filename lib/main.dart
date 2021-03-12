@@ -1,33 +1,26 @@
 import 'package:flutter/material.dart';
 
-// 함수 정의
-printInteger(int aNumber) {
-  print('The number is $aNumber'); // 콘솔에 출력
-}
-
-void main() {
+void main() async {
   // 원래 있던거
   // runApp(MyApp());
 
-  // Exam 1)
-  // var number = 42; // 동적 타입 변수 지정
-  // printInteger(number); // 함수 호출
+  // exam 3)
+  await getVersionName().then((value) => {
+    print(value)
+  });
 
-
-  // Exam 2)
-  checkVersion();
   print('end process');
 }
 
-
-Future checkVersion() async {
-  var version = await lookUpVersion();
-  print(version);
+Future<String> getVersionName() async {
+  var versionName = await lookUpVersionName();
+  return versionName;
 }
 
-int lookUpVersion() {
-  return 12;
+String lookUpVersionName() {
+  return 'Android Q';
 }
+
 
 
 class MyApp extends StatelessWidget {
