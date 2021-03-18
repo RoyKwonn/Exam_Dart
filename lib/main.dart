@@ -5,20 +5,19 @@ void main() async {
   // 원래 있던거
   // runApp(MyApp());
 
-  // exam 5)
-  var jsonString = '''
-  [
-    {"score": 40},
-    {"score": 80}
-  ]
-  ''';
-  var scores = jsonDecode(jsonString);
-  print(scores is List);            // true 출력
-  var firstScore = scores[0];
-  print(firstScore is Map);         // true 출력
-  print(firstScore['score'] == 40); // true 출력
+  // exam 6)
+  var scores = [
+    {'score': 40},
+    {'score': 80},
+    {'score': 100, 'overtime': true, 'special_guest': null}
+  ];
 
-
+  // 띄어쓰기가 없어야 한다.
+  var jsonText = jsonEncode(scores);
+  print(jsonText ==
+      '[{"score":40},{"score":80},'
+      '{"score":100,"overtime":true,'
+      '"special_guest":null}]');        // true 출력
 }
 
 
