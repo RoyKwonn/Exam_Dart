@@ -5,28 +5,22 @@ void main() async {
   // 원래 있던거
   // runApp(MyApp());
 
-  // exam 4)
+  // exam 5)
+  var jsonString = '''
+  [
+    {"score": 40},
+    {"score": 80}
+  ]
+  ''';
+  var scores = jsonDecode(jsonString);
+  print(scores is List);            // true 출력
+  var firstScore = scores[0];
+  print(firstScore is Map);         // true 출력
+  print(firstScore['score'] == 40); // true 출력
 
-  printOne();
-  printTwo();
-  printThree();
+
 }
 
-void printOne() {
-  print('One');
-}
-
-void printThree() {
-  print('Three');
-}
-
-void printTwo() async {
-  await Future.delayed(Duration(seconds: 2), () {
-    print('Future Method');
-  });
-
-  print('Two');
-}
 
 
 
