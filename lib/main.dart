@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
 
 void main() async {
   // 원래 있던거
   // runApp(MyApp());
 
-  // exam 3)
-  await getVersionName().then((value) => {
-    print(value)
+  // exam 4)
+
+  printOne();
+  printTwo();
+  printThree();
+}
+
+void printOne() {
+  print('One');
+}
+
+void printThree() {
+  print('Three');
+}
+
+void printTwo() async {
+  await Future.delayed(Duration(seconds: 2), () {
+    print('Future Method');
   });
 
-  print('end process');
+  print('Two');
 }
 
-Future<String> getVersionName() async {
-  var versionName = await lookUpVersionName();
-  return versionName;
-}
-
-String lookUpVersionName() {
-  return 'Android Q';
-}
 
 
 
