@@ -2,32 +2,36 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 
-Future<int> sumStream(Stream<int> stream) async {
-  var sum = 0;
-  await for (var value in stream) {
-    print('sumStream : $value');
-    sum += value;
-  }
-  return sum;
-}
-
-Stream<int> countStream(int to) async* {
-  for(int i = 1; i <= to; i++) {
-    print('countStream : $i');
-    yield i;
-  }
-}
-
 void main() async {
   // 원래 있던거
   // runApp(MyApp());
 
-  // exam 9)
-  var stream = Stream.fromIterable([1, 2, 3, 4, 5]);
+  // exam 11)
+  Car bmw = Car(320, 100000, 'BMW');
+  Car toyota = Car(250, 70000, 'BENZ');
+  Car ford = Car(200, 80000, 'FORD');
 
-  // 가장 마지막 데이터의 결과: 5
-  stream.last.then((value) => print('last: $value'));
+  bmw.saleCar();
+  bmw.saleCar();
+  bmw.saleCar();
+  print(bmw.price);
+}
 
+class Car {
+  int maxSpeed;
+  num price;
+  String name;
+
+  Car(int maxSpeed, num price, String name) {
+    this.maxSpeed = maxSpeed;
+    this.price = price;
+    this.name = name;
+  }
+
+  int saleCar() {
+    price = price * 0.9;
+    return price;
+  }
 }
 
 
