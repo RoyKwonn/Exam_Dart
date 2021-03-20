@@ -1,23 +1,32 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
+import 'dart:async';
+
+
+Future<int> sumStream(Stream<int> stream) async {
+  var sum = 0;
+  await for (var value in stream) {
+    print('sumStream : $value');
+    sum += value;
+  }
+  return sum;
+}
+
+Stream<int> countStream(int to) async* {
+  for(int i = 1; i <= to; i++) {
+    print('countStream : $i');
+    yield i;
+  }
+}
 
 void main() async {
   // 원래 있던거
   // runApp(MyApp());
 
-  // exam 6)
-  var scores = [
-    {'score': 40},
-    {'score': 80},
-    {'score': 100, 'overtime': true, 'special_guest': null}
-  ];
+  // exam 7)
+  var stream = countStream(10);
+  var sum = await sumStream(stream);
+  print(sum); // 55
 
-  // 띄어쓰기가 없어야 한다.
-  var jsonText = jsonEncode(scores);
-  print(jsonText ==
-      '[{"score":40},{"score":80},'
-      '{"score":100,"overtime":true,'
-      '"special_guest":null}]');        // true 출력
 }
 
 
